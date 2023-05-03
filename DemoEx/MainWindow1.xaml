@@ -1,0 +1,75 @@
+﻿<Window x:Class="DemoEx.MainWindow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:local="clr-namespace:DemoEx"
+        mc:Ignorable="d"
+        Title="MainWindow1" MinHeight="450" MinWidth="800" FontFamily="Comic Sans MS">
+
+    
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock x:Name="textCurrent" FontSize="18"/>
+                <TextBlock Text=" из " FontSize="18"/>
+                <TextBlock x:Name="textAll" FontSize="18"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Сортировка по скидке:"></Label>
+                <ComboBox x:Name="ComboBoxFilterProductDiscountAmount" Margin="0 0 15 0"  SelectionChanged="ComboBoxFilterProductDiscountAmount_SelectionChanged"></ComboBox>
+                <Label Content="Сортировка по цене:"></Label>
+                <ComboBox x:Name="ComboBoxFilterProductByPrice" SelectionChanged="ComboBoxFilterProductByPrice_SelectionChanged"></ComboBox>
+
+                <Label Content="Поиск:"></Label>
+                <TextBox x:Name="tbSearch" Width="200" Height="20" TextChanged="tbSearch_TextChanged"></TextBox>
+
+            </StackPanel>
+        </StackPanel>
+        
+
+        <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden" x:Name="lvProducts" HorizontalAlignment="Center" Grid.Row="1">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" HorizontalAlignment="Center"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="2 2 2 2" Grid.RowSpan="11" Grid.ColumnSpan="2" Background="{Binding ColorProductDiscountAmount}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Height="100" Width="200" Grid.Column="0" Source="{Binding ProductPhotoFromResources, FallbackValue={StaticResource NullImage}}" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+
+                            <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding ProductName}" FontSize="22" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding ProductDescription}" ></TextBlock>
+                                <TextBlock Text="Производитель:" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding ProductManufacturer.ProductManufacturerName}"></TextBlock>
+                                <TextBlock Text="Цена:" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding ProductCost}"></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                <TextBlock Text="Размер скидки:"></TextBlock>
+                                <TextBlock Text="скидка"></TextBlock>
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Window>
