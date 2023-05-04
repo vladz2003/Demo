@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace DemoEx
@@ -25,9 +15,9 @@ namespace DemoEx
         private bool isAuthError = false;
         private int ticksLeft = 10;
         private DispatcherTimer _timer;
-        private List<User> users; 
+        private List<User> users;
         // функция входа 
-       
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,9 +41,12 @@ namespace DemoEx
 
             if (isAuthError)
             {
-                if (Text_Captcha.Text != TextBox_Captcha.Text || user == null)
+                if (Text_Captcha.Text == TextBox_Captcha.Text && user != null)
                 {
-                    MessageBox.Show("Вы не прошли проверку на работа или ввели неверный логин или пароль. Подождите 10 секунд и попробуйте снова");
+                }
+                else
+                {
+                    MessageBox.Show("Вы не прошли проверку на робота или ввели неверный логин или пароль. Подождите 10 секунд и попробуйте снова");
                     Button_Autorization.IsEnabled = false;
                     Button_Guest.IsEnabled = false;
                     var timer = new DispatcherTimer();
@@ -67,13 +60,22 @@ namespace DemoEx
 
                     return;
                 }
-            }            
+            }
 
             if (user != null)
             {
                 MessageBox.Show("Авторизация прошла успешно!");
-                MainWindow1 wind = new MainWindow1(user);
-                wind.Show();
+                if (user.Role.RoleName == "Администратор")
+                {
+                    Administrator admin = new Administrator(user);
+                    admin.Show();
+                }
+                else
+                {
+                    MainWindow1 wind = new MainWindow1(user);
+                    wind.Show();
+                }
+
                 this.Close();
             }
             else
@@ -83,7 +85,7 @@ namespace DemoEx
                 Text_Captcha.Text = generateCaptcha(4);
 
                 isAuthError = true;
-            }            
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -113,7 +115,7 @@ namespace DemoEx
                     case 2:
                         captcha += Convert.ToChar(rand.Next(48, 57));
                         break;
-                }                
+                }
             }
 
             return captcha;
@@ -126,7 +128,7 @@ namespace DemoEx
 
         private void Button_Click(object sender, object e)
         {
-           
+
         }
 
         private void Button_Guest_Click(object sender, RoutedEventArgs e)
@@ -135,7 +137,7 @@ namespace DemoEx
             user.UserName = "Гость";
             MainWindow1 wind = new MainWindow1(user);
             wind.Show();
-            this.Close();   
+            this.Close();
         }
     }
 }

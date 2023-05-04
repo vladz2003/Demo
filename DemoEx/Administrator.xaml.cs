@@ -6,17 +6,16 @@ using System.Windows.Controls;
 namespace DemoEx
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow1.xaml
+    /// Логика взаимодействия для Administrator.xaml
     /// </summary>
-    public partial class MainWindow1 : Window
+    public partial class Administrator : Window
     {
         private List<Product> _products;
-        public MainWindow1(User user)
+        public Administrator(User user)
         {
             InitializeComponent();
-            Trade123Entities db = new Trade123Entities();
-            _products = db.Product.ToList();
-            lvProducts.ItemsSource = _products;
+            _products = Trade123Entities.Context().Product.ToList();
+            List_Products.ItemsSource = _products;
             textAll.Text = _products.Count.ToString();
 
             ComboBoxFilterProductDiscountAmount.ItemsSource = new List<string>
@@ -52,7 +51,7 @@ namespace DemoEx
 
         private void refreshCurrentCountProducts()
         {
-            textCurrent.Text = lvProducts.ItemsSource.Cast<Product>().Count().ToString();
+            textCurrent.Text = List_Products.ItemsSource.Cast<Product>().Count().ToString();
         }
 
         private void sortProducts()
@@ -105,7 +104,48 @@ namespace DemoEx
                 products = products.FindAll(p => p.ProductName.Contains(tbSearch.Text));
             }
 
-            lvProducts.ItemsSource = products;
+            List_Products.ItemsSource = products;
+        }
+
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedProduct = List_Products.SelectedItems.Cast<Product>().ToList();
+
+            if (selectedProduct.Count == 0)
+            {
+                MessageBox.Show("Выберите товар, который желаете удалить нажатием на карточку");
+                return;
+            }
+            if ((MessageBox.Show("Выбранный товар будет удален. Продолжить?", "Удаление товара", MessageBoxButton.YesNo, MessageBoxImage.Question)) == MessageBoxResult.Yes)
+            {
+                var db = Trade123Entities.Context();
+                foreach (var item in selectedProduct)
+                {
+                    var deleted = db.OrderProduct.Where(p => p.ProductID == item.ProductID);
+                    db.OrderProduct.RemoveRange(deleted);
+                }
+                db.SaveChanges();
+                db.Product.RemoveRange(selectedProduct);
+                db.SaveChanges();
+                MessageBox.Show("Товар был успешно удален");
+                _products = db.Product.ToList();
+                List_Products.ItemsSource = _products;
+                sortProducts();
+            }
+        }
+
+        private void Button_Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Add_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
+
+
+
+
 }

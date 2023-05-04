@@ -65,6 +65,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Administrator.xaml.cs">
+      <DependentUpon>Administrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Edited.xaml.cs">
+      <DependentUpon>Edited.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow1.xaml.cs">
       <DependentUpon>MainWindow1.xaml</DependentUpon>
     </Compile>
@@ -111,6 +117,14 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Administrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Edited.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

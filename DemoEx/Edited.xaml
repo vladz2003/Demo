@@ -1,0 +1,51 @@
+﻿<Window x:Class="DemoEx.Edited"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoEx"
+        mc:Ignorable="d"
+        Title="Edited" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="Button_Autorization_Copy" Content="Сохранить" BorderBrush="Black" BorderThickness="2,2,2,2" Foreground="Black" Background="#FF76E383" FontSize="20" FontFamily="Comic Sans MS" Margin="330,389,330,5"/>
+        <ComboBox x:Name="Articyl" HorizontalAlignment="Left" Margin="60,75,0,0" VerticalAlignment="Top" Width="150"/>
+        <ComboBox x:Name="Kolvo" Margin="0,75,0,0" VerticalAlignment="Top" Width="150"/>
+        <ComboBox x:Name="Proizvoditel" HorizontalAlignment="Left" Margin="590,75,0,0" VerticalAlignment="Top" Width="150">
+            <Label Content="Артикул" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        </ComboBox>
+        <ComboBox x:Name="Name_Object" HorizontalAlignment="Left" Margin="60,135,0,0" VerticalAlignment="Top" Width="150">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
+        </ComboBox>
+        <ComboBox x:Name="Unit_Type" HorizontalAlignment="Center" Margin="0,135,0,0" VerticalAlignment="Top" Width="150">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
+        </ComboBox>
+        <ComboBox x:Name="Max_price" HorizontalAlignment="Left" Margin="590,135,0,0" VerticalAlignment="Top" Width="150">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
+        </ComboBox>
+        <ComboBox x:Name="Catergory" HorizontalAlignment="Left" Margin="60,0,0,0" VerticalAlignment="Center" Width="150">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
+        </ComboBox>
+        <ComboBox x:Name="Supplier"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="150">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
+        </ComboBox>
+        <ComboBox x:Name="Current_discount" HorizontalAlignment="Left" Margin="590,0,0,0" VerticalAlignment="Center" Width="150">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
+        </ComboBox>
+        <ComboBox x:Name="Price"  HorizontalAlignment="Left" Margin="60,280,0,0" VerticalAlignment="Top" Width="150">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
+        </ComboBox>
+        <Label Content="Артикул" HorizontalAlignment="Left" Margin="60,44,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Количество на складе" HorizontalAlignment="Left" Margin="325,44,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Производитель" HorizontalAlignment="Left" Margin="590,44,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Имя обьекта" HorizontalAlignment="Left" Margin="60,103,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Единица измерения" HorizontalAlignment="Left" Margin="325,103,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Максимальная скидка" HorizontalAlignment="Left" Margin="590,103,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Категория " HorizontalAlignment="Left" Margin="60,174,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Поставщик " HorizontalAlignment="Left" Margin="325,174,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Текущая скидка " HorizontalAlignment="Left" Margin="590,174,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <Label Content="Стоимость за штуку " HorizontalAlignment="Left" Margin="60,248,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+        <TextBox x:Name="Description" TextWrapping="Wrap" Text="" Margin="325,280,60,62"/>
+        <Label Content="Описание " HorizontalAlignment="Left" Margin="325,248,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="16"/>
+
+    </Grid>
+</Window>

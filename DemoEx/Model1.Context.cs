@@ -15,6 +15,15 @@ namespace DemoEx
     
     public partial class Trade123Entities : DbContext
     {
+        private static Trade123Entities _context;
+        public static Trade123Entities Context()
+        {
+            if(_context == null)
+            {
+                _context = new Trade123Entities();
+            }
+            return _context;
+        }
         public Trade123Entities()
             : base("name=Trade123Entities")
         {
