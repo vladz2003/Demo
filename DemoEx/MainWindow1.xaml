@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
@@ -31,9 +32,8 @@
 
             </StackPanel>
         </StackPanel>
-        
 
-        <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden" x:Name="lvProducts" HorizontalAlignment="Center" Grid.Row="1">
+        <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden" x:Name="ListView_Products" HorizontalAlignment="Center" Grid.Row="1">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Vertical" HorizontalAlignment="Center"></WrapPanel>
@@ -70,6 +70,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        <StackPanel Grid.Row="3">
+            <Button Width="300" Content="Добавить в корзину" BorderBrush="Black" BorderThickness="2,2,2,2" Foreground="Black" Background="#FF76E383" FontSize="20" FontFamily="Comic Sans MS" Margin="0 0 0 10" x:Name="Button_AddToCart" Click="Button_AddToCart_Click"></Button>
+            <Button  Width="300" Content="Оформить заказ" BorderBrush="Black" BorderThickness="2,2,2,2" Foreground="Black" Background="#FF76E383" FontSize="20" FontFamily="Comic Sans MS" Visibility="Hidden" Margin="0 0 0 10" x:Name="Button_GoToCart" Click="Button_GoToCart_Click"></Button>
+        </StackPanel>
     </Grid>
 </Window>

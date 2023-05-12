@@ -1,0 +1,78 @@
+﻿<Window x:Class="DemoEx.TalonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoEx"
+        mc:Ignorable="d"
+        Title="TalonWindow" Height="450" Width="800">
+    <Grid x:Name="gridTalon">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBlock Text="Дата заказа:"></TextBlock>
+            <TextBlock Text="{Binding OrderCreateDate}" Margin="10 0"></TextBlock>
+            <TextBlock Text="Дата доставки:"></TextBlock>
+            <TextBlock Text="{Binding OrderDeliveryDate}" Margin="10 0"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 0 10">
+            <TextBlock Text="Номер заказа:"></TextBlock>
+            <TextBlock Text="{Binding OrderId}"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Состав заказа:"></TextBlock>
+            <DataGrid x:Name="dataGridOrderedProducts" AutoGenerateColumns="False" IsReadOnly="True" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding Product.ProductName}" Width="auto"/>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Product.ProductDiscountCost}" Width="auto"/>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Count}" Width="auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="3" VerticalAlignment="Center" Margin="0 0 0 10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Сумма:"></TextBlock>
+                <TextBlock x:Name="tbTotalSum"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Скидка:"></TextBlock>
+                <TextBlock x:Name="tbDiscount"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Сумма со скидкой:"></TextBlock>
+                <TextBlock x:Name="tbTotalDicountSum"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Center" Grid.Row="4" Orientation="Horizontal">
+            <TextBlock Text="Адрес пункта выдачи:"></TextBlock>
+            <TextBlock Text="{Binding PickupPoint.Address}"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" VerticalAlignment="Center" Orientation="Horizontal" Margin="0 10 0 0">
+            <TextBlock Text="Код получения:" FontWeight="Bold" FontSize="22"></TextBlock>
+            <TextBlock Text="{Binding OrderGetCode}" FontWeight="Bold" FontSize="22"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <Button Content="Сохранить в PDF" x:Name="Button_SaveToPdf" Click="Button_SaveToPdf_Click"  Margin="10">
+
+            </Button>
+            <Button Content="Вернуться на главную" x:Name="Button_GoToMain"  Click="Button_GoToMain_Click" Margin="10">
+
+            </Button>
+        </StackPanel>
+
+
+    </Grid>
+</Window>

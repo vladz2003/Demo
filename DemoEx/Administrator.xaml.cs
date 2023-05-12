@@ -11,11 +11,13 @@ namespace DemoEx
     public partial class Administrator : Window
     {
         private List<Product> _products;
+        private User _user;
         public Administrator(User user)
         {
             InitializeComponent();
             _products = Trade123Entities.Context().Product.ToList();
             List_Products.ItemsSource = _products;
+            _user = user;
             textAll.Text = _products.Count.ToString();
 
             ComboBoxFilterProductDiscountAmount.ItemsSource = new List<string>
@@ -136,12 +138,33 @@ namespace DemoEx
 
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
+            var selectedProduct = List_Products.SelectedItems.Cast<Product>().ToList();
 
+            if (selectedProduct.Count == 0)
+            {
+                MessageBox.Show("Выберите товар, который желаете редактировать нажатием на карточку");
+                return;
+            }
+
+            if (selectedProduct.Count == 1)
+            {
+                var productToEdit = selectedProduct.FirstOrDefault();
+                AddEditProductWindow addEditProductWindow = new AddEditProductWindow(_user, productToEdit);
+                addEditProductWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Разрешается редактировать только один товар");
+                return;
+            }
         }
 
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEditProductWindow addEditProductWindow = new AddEditProductWindow(_user, new Product());
+            addEditProductWindow.Show();
+            this.Close();
         }
     }
 

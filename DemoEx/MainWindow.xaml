@@ -21,12 +21,12 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center"  Margin="0 20 0 20">
             <Label Content="Логин"    Height="43" Width="136" FontFamily="Comic Sans MS" FontSize="20" />
-            <TextBox x:Name="TextBox_Login" TextWrapping="Wrap" Width="254" Height="43" FontFamily="Comic Sans MS" BorderBrush="Black" BorderThickness="2,2,2,2" TextChanged="TextBox_TextChanged_1" Background="White" FontSize="20"/>
+            <TextBox Text="loginDEjrm2018" x:Name="TextBox_Login" TextWrapping="Wrap" Width="254" Height="43" FontFamily="Comic Sans MS" BorderBrush="Black" BorderThickness="2,2,2,2" TextChanged="TextBox_TextChanged_1" Background="White" FontSize="20"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
             <Label Content="Пароль"  Height="43" Width="136" FontFamily="Comic Sans MS" FontSize="20" />
-            <TextBox x:Name="TextBox_Password"  TextWrapping="Wrap"  Width="254" Height="43" TextChanged="TextBox_TextChanged" FontFamily="Comic Sans MS" BorderBrush="Black" BorderThickness="2,2,2,2" FontSize="20"/>
+            <TextBox Text="Cpb+Im" x:Name="TextBox_Password"  TextWrapping="Wrap"  Width="254" Height="43" TextChanged="TextBox_TextChanged" FontFamily="Comic Sans MS" BorderBrush="Black" BorderThickness="2,2,2,2" FontSize="20"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Visibility="Hidden" x:Name="Stack_Captcha">
